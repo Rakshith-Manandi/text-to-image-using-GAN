@@ -7,7 +7,6 @@
 import sys
 sys.path.insert(0, "/datasets/home/23/223/rmanandi/text-to-image-using-GAN/")
 import nbimporter
-import io
 
 
 # In[32]:

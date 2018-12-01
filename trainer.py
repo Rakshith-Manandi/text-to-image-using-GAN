@@ -1,15 +1,15 @@
 
 # coding: utf-8
 
-# In[11]:
+# In[5]:
 
 
 import sys
 sys.path.insert(0, "/datasets/home/23/223/rmanandi/text-to-image-using-GAN/")
-#import nbimporter
+import nbimporter
 
 
-# In[12]:
+# In[6]:
 
 
 import numpy as np
@@ -27,7 +27,7 @@ from PIL import Image
 import os
 
 
-# In[13]:
+# In[7]:
 
 
 class Trainer(object):

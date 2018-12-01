@@ -1,15 +1,15 @@
 
 # coding: utf-8
 
-# In[14]:
+# In[1]:
 
 
 import sys
 sys.path.insert(0, "/datasets/home/23/223/rmanandi/text-to-image-using-GAN/")
-#import nbimporter
+import nbimporter
 
 
-# In[16]:
+# In[2]:
 
 
 import torch
@@ -21,7 +21,7 @@ import utils
 import pdb
 
 
-# In[17]:
+# In[3]:
 
 
 class generator(nn.Module):

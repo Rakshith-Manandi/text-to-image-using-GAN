@@ -12,7 +12,7 @@ birds_dataset_path: '/scratch/aelnouby/text2image/birds.hdf5'
 #flowers_images_path: '/export/mlrg/aelnouby/projects/GANs/flowers_dataset/'
 #flowers_embedding_path: '/export/mlrg/aelnouby/projects/GANs/flowers_dataset/flowers_icml/'
 #flowers_text_path: '/export/mlrg/aelnouby/projects/GANs/flowers_dataset/cvpr2016_flowers/text_c10/'
-flowers_dataset_path: '/scratch/aelnouby/text2image/flowers.hdf5'
+flowers_dataset_path: '/datasets/ee285f-public/oxford_flowers/flowers.hdf5'
 
 #flowers_val_split_path: '/export/mlrg/aelnouby/projects/GANs/flowers_dataset/flowers_icml/valclasses.txt'
 #flowers_train_split_path: '/export/mlrg/aelnouby/projects/GANs/flowers_dataset/flowers_icml/trainclasses.txt'

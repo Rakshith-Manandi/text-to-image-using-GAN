@@ -69,7 +69,7 @@ class Trainer(object):
         self.l1_coef = l1_coef
         self.l2_coef = l2_coef
 
-        self.data_loader = DataLoader(self.dataset, batch_size=self.batch_size, shuffle=True,
+        self.data_loader = DataLoader(self.dataset, batch_size=self.batch_size, shuffle=False,
                                 num_workers=self.num_workers)
 
         self.optimD = torch.optim.Adam(self.discriminator.parameters(), lr=self.lr, betas=(self.beta1, 0.999))
@@ -80,7 +80,7 @@ class Trainer(object):
         self.save_path = save_path
         self.type = type
 
-    def train(self, cls=False):
+    def train(self, cls):
 
         #if self.type == 'wgan':
         #    self._train_wgan(cls)
@@ -99,7 +99,9 @@ class Trainer(object):
 
         for epoch in range(self.num_epochs):
             iteration = 0
+            #print 'Outside Dataloader loop is'
             for sample in self.data_loader:
+                #print 'Inside Dataloader loop is'
                 iteration += 1
                 right_images = sample['right_images']
                 right_embed = sample['right_embed']

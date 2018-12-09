@@ -30,12 +30,14 @@ class Text2ImageDataset(Dataset):
         self.dataset_keys = None
         self.split = 'train' if split == 0 else 'valid' if split == 1 else 'test'
         self.h5py2int = lambda x: int(np.array(x))
+        #print 'Inside Init\n'
 
     def __len__(self):
         f = h5py.File(self.datasetFile, 'r')
         self.dataset_keys = [str(k) for k in f[self.split].keys()]
         length = len(f[self.split])
         f.close()
+        #print 'Inside Len\n'
 
         return length
 
@@ -46,11 +48,15 @@ class Text2ImageDataset(Dataset):
 
         example_name = self.dataset_keys[idx]
         example = self.dataset[self.split][example_name]
+        #print len(example)
 
+        #print 'Inside getitem\n'
+        #print 'Before sample\n',idx
         # pdb.set_trace()
         #print "image = ", len(example)
         right_image = np.array(example['img']).tobytes()
         right_embed = np.array(example['embeddings'], dtype=float)
+        #print 'Before sample',idx
         wrong_image = np.array(self.find_wrong_image(example['class'])).tobytes()
         inter_embed = np.array(self.find_inter_embed())
 
@@ -59,20 +65,25 @@ class Text2ImageDataset(Dataset):
 
         right_image = self.validate_image(right_image)
         wrong_image = self.validate_image(wrong_image)
-
-        txt = np.array(example['txt']).astype(str)
-
+        #print 'After sample',idx
+        #print 'Before sample\n\n',np.array(example['txt'])
+        a = example['txt'].value
+        special = u"\ufffd\ufffd"
+        a = a.replace(special,' ')
+        txt = np.array(a).astype(str)
+        #txt = np.array(example['txt']).astype(str)
+        #print 'Before sample\n\n',txt
         sample = {
                 'right_images': torch.FloatTensor(right_image),
                 'right_embed': torch.FloatTensor(right_embed),
                 'wrong_images': torch.FloatTensor(wrong_image),
                 'inter_embed': torch.FloatTensor(inter_embed),
-                'txt': str(txt)
+                'txt': txt
                  }
 
         sample['right_images'] = sample['right_images'].sub_(127.5).div_(127.5)
         sample['wrong_images'] =sample['wrong_images'].sub_(127.5).div_(127.5)
-
+        #print 'After sample',idx
         return sample
 
     def find_wrong_image(self, category):

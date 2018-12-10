@@ -78,7 +78,7 @@ class Text2ImageDataset(Dataset):
                 'right_embed': torch.FloatTensor(right_embed),
                 'wrong_images': torch.FloatTensor(wrong_image),
                 'inter_embed': torch.FloatTensor(inter_embed),
-                'txt': txt
+                'txt': str(txt)
                  }
 
         sample['right_images'] = sample['right_images'].sub_(127.5).div_(127.5)

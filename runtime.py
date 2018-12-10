@@ -37,11 +37,11 @@ args = easydict.EasyDict({'type': 'gan',
                          'vis_screen': 'gan',
                          'save_path':'./flowers_cls',
 
-'inference': False,
+'inference': True,
 'pre_trained_disc': '',
 'pre_trained_gen': '',
 'dataset': 'flowers', 
-'split': 0,
+'split': 2,
 'batch_size':64,
 'num_workers':8,
 'epochs':200})

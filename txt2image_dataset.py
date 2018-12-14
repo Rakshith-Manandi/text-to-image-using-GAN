@@ -62,15 +62,21 @@ class Text2ImageDataset(Dataset):
 
         right_image = Image.open(io.BytesIO(right_image)).resize((64, 64))
         wrong_image = Image.open(io.BytesIO(wrong_image)).resize((64, 64))
+        
+        a = example['txt'].value
+        special = u"\ufffd\ufffd"
+        a = a.replace(special,' ')
+        txt = np.array(a).astype(str)
+        txt = str(txt)
+        
+        if self.split == 'test':
+            name = txt.replace("/", "").replace("\n", "").replace(" ", "_")[:100]
+            right_image.save('results_demo/original_images/{0}.jpg'.format(name))
 
         right_image = self.validate_image(right_image)
         wrong_image = self.validate_image(wrong_image)
         #print 'After sample',idx
         #print 'Before sample\n\n',np.array(example['txt'])
-        a = example['txt'].value
-        special = u"\ufffd\ufffd"
-        a = a.replace(special,' ')
-        txt = np.array(a).astype(str)
         #txt = np.array(example['txt']).astype(str)
         #print 'Before sample\n\n',txt
         sample = {
@@ -78,7 +84,7 @@ class Text2ImageDataset(Dataset):
                 'right_embed': torch.FloatTensor(right_embed),
                 'wrong_images': torch.FloatTensor(wrong_image),
                 'inter_embed': torch.FloatTensor(inter_embed),
-                'txt': str(txt)
+                'txt': txt
                  }
 
         sample['right_images'] = sample['right_images'].sub_(127.5).div_(127.5)

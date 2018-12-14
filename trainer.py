@@ -68,7 +68,7 @@ class Trainer(object):
         self.l1_coef = l1_coef
         self.l2_coef = l2_coef
 
-        self.data_loader = DataLoader(self.dataset, batch_size=self.batch_size, shuffle=False,
+        self.data_loader = DataLoader(self.dataset, batch_size=self.batch_size, shuffle=True,
                                 num_workers=self.num_workers)
 
         self.optimD = torch.optim.Adam(self.discriminator.parameters(), lr=self.lr, betas=(self.beta1, 0.999))

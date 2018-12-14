@@ -1,0 +1,6 @@
+# Birds CUB dataset
+birds_dataset_path: '/datasets/ee285f-public/caltech_ucsd_birds/birds.hdf5'
+
+
+# flowers dataset
+flowers_dataset_path: '/datasets/ee285f-public/oxford_flowers/flowers.hdf5'

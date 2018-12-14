@@ -18,7 +18,7 @@
 
 
 #from models import gan,gan_cls
-import gan, gan_cls
+import gan_cls
 
 # In[4]:
 
@@ -29,13 +29,9 @@ class gan_factory(object):
     def generator_factory(type):
         if type == 'gan':
             return gan_cls.generator()
-        elif type == 'vanilla_gan':
-            return gan.generator()
 
     @staticmethod
     def discriminator_factory(type):
         if type == 'gan':
             return gan_cls.discriminator()
-        elif type == 'vanilla_gan':
-            return gan.discriminator()
 

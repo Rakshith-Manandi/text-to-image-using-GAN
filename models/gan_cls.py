@@ -16,7 +16,6 @@ import torch
 import torch.nn as nn
 from torch.autograd import Variable
 import numpy as np
-#from utils import Concat_embed
 import utils
 import pdb
 
@@ -41,7 +40,6 @@ class generator(nn.Module):
             nn.LeakyReLU(negative_slope=0.2, inplace=True)
             )
 
-        # based on: https://github.com/pytorch/examples/blob/master/dcgan/main.py
         self.netG = nn.Sequential(
             nn.ConvTranspose2d(self.latent_dim, self.ngf * 8, 4, 1, 0, bias=False),
             nn.BatchNorm2d(self.ngf * 8),

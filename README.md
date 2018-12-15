@@ -1,38 +1,29 @@
-# Text-to-Image-Synthesis 
+# Text to Image Synthesis Synthesis using Generative Adversarial Networks
 
 ## Intoduction
 
 This project is mainly inspired from [Generative Adversarial Text-to-Image Synthesis paper](https://arxiv.org/abs/1605.05396). We implemented this model using PyTorch. In this model we train a conditional generative adversarial network, conditioned on text captions, to generate images that correspond to the captions. The network architecture is shown below. This architecture is based on DCGAN. 
 
 <figure><img src='images/dcgan_network.png'></figure>
-Image credits [1]
+Credits: [1]
 
 
 ## Datasets
 
 We used the hdf5 format of these datasets which can be found here for [birds_hdf5](https://drive.google.com/file/d/1mNhn6MYpBb-JwE86GC1kk0VJsYj-Pn5j/view) and here for [flowers_hdf5](https://drive.google.com/file/d/1EgnaTrlHGaqK5CCgHKLclZMT_AMSTyh8/view). These hdf5 datasets were converted from [Caltech-UCSD Birds 200](http://www.vision.caltech.edu/visipedia/CUB-200.html) and [Oxford Flowers](http://www.robots.ox.ac.uk/~vgg/data/flowers/102/) datasets.
 
-We used the [text embeddings](https://github.com/reedscot/icml2016) provided by the paper authors. 
+We used the [text embeddings](https://github.com/reedscot/icml2016) provided by the paper([1]) authors. 
 
-**Hd5 file taxonomy**
-`
- - split (train | valid | test )
-    - example_name
-      - 'name'
-      - 'img'
-      - 'embeddings'
-      - 'class'
-      - 'txt'
-      
+
 ## Requirements
 
-- pytorch 
-- visdom
+- PyTorch 
 - h5py
+- EasyDict
 - PIL
-- numpy
+- Numpy
 
-This implementation currently only support running with GPUs.<br/>
+This implementation only supports running with GPUs.<br/>
 
 **To install all the dependencies please do:** <br/>
 $ pip install -r requirements.txt<br/>
@@ -44,9 +35,17 @@ $ git clone https://github.com/Rakshith-Manandi/text-to-image-using-GAN.git <br/
 $ cd ./text-to-image-using-GAN <br/>
 $ python -u runtime.py <br/>
 
+**Inputs to the model for training/prediction:**
+- `dataset`: Dataset to use `(birds | flowers)`
+- `split` : An integer indicating which split to use `(0 : train | 1: valid | 2: test)`.
+- `save_path` : Path for saving the models and results
+- `pre_trained_disc` : Discriminator pre-tranined model path used for intializing training or continuing from a checkpoint.
+- `pre_trained_gen` Generator pre-tranined model path used for intializing training or continuing from a checkpoint.
+- `cls`: Boolean flag to whether train with cls algorithms or not.
+
 ## Demo
 
-**To get a glimpse of the model you can:** <br/>
+**To get a glimpse of the results generated, you can:** <br/>
 $ git clone https://github.com/Rakshith-Manandi/text-to-image-using-GAN.git <br/>
 $ cd ./text-to-image-using-GAN <br/>
 $ jupyter notebook GAN_demo.ipynb <br/>
@@ -59,11 +58,5 @@ $ jupyter notebook GAN_demo.ipynb <br/>
 
 
 ## References
-[1]  Generative Adversarial Text-to-Image Synthesis https://arxiv.org/abs/1605.05396
+[1]  Generative Adversarial Text-to-Image Synthesis https://arxiv.org/abs/1605.05396 </br>
 [2] https://github.com/reedscot/icml2016 (the authors version)
-
-
-
-
-      
- 

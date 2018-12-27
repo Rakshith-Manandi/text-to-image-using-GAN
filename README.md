@@ -41,7 +41,7 @@ $ python -u runtime.py <br/>
 - `save_path` : Path for saving the models and results
 - `pre_trained_disc` : Discriminator pre-tranined model path used for intializing training or continuing from a checkpoint.
 - `pre_trained_gen` Generator pre-tranined model path used for intializing training or continuing from a checkpoint.
-- `cls`: Boolean flag to whether train with cls algorithms or not.
+- `cls`: Boolean flag to indicate whether to train with cls algorithms or not.
 
 ## Demo
 
@@ -49,7 +49,7 @@ $ python -u runtime.py <br/>
 First make sure you have installed all the dependencies, as mentioned in Requirements section. Also, make sure you have GPU access. </br>
 $ git clone https://github.com/Rakshith-Manandi/text-to-image-using-GAN.git <br/>
 $ cd ./text-to-image-using-GAN <br/>
-$ jupyter notebook GAN_demo.ipynb  (i.e. open the GAN_demo.ipynb file)<br/>
+$ jupyter notebook GAN_demo.ipynb  (i.e. open the 'GAN_demo.ipynb' file)<br/>
 
 ## Results
 
